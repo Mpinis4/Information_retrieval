@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Ομαδοποίηση Ομιλιών με KMeans</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ομαδοποίηση Ομιλιών με KMeans</h1>
+
+    <!-- Φόρμα για την εισαγωγή του αριθμού των ομάδων -->
+    <form method="POST">
+        <label for="n_clusters">Εισάγετε τον αριθμό των ομάδων:</label>
+        <input type="number" id="n_clusters" name="n_clusters" min="2" value="{{ n_clusters }}" required>
+        <button type="submit">Υποβολή</button>
+    </form>
+
+    <!-- Εμφάνιση αποτελεσμάτων ομαδοποίησης μόνο εάν υπάρχουν -->
+    {% if results %}
+        <h2>Αποτελέσματα Ομαδοποίησης:</h2>
+        <p>Silhouette Σκορ: {{ silhouette_avg }}</p>
+        <!-- Λίστα αποτελεσμάτων για κάθε ομιλία και ομάδα -->
+        <ul>
+        {% for result in results %}
+            <li>
+                <strong>Ομάδα:</strong> {{ result.cluster }}<br>
+                <strong>Ομιλία:</strong> {{ result.speech }}
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    
+    <!-- Κουμπί για επιστροφή στην αρχική σελίδα -->
+    <button onclick="window.location.href='/'">Αρχική σελίδα</button>
+</body>
+</html>

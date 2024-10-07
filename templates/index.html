@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Σύστημα ανάκτησης πληροφορίας</h1>
+    <p>Επιλέξτε ενέργεια:</p>
+    <button onclick="window.location.href='/search'">Μηχανή αναζήτησης</button>
+    <button onclick="window.location.href='/keyword-extraction'">Σύστημα εξαγωγής λέξεων-κλειδιών</button>
+    <button onclick="window.location.href='/topk'">Κορυφαία k ζεύγη</button>
+    <button onclick="window.location.href='/lsi'">Τεχνική μείωσης διαστάσεων</button>
+    <button onclick="window.location.href='/clustering'">Ομαδοποιηση ομιλιων</button>
+</body>
+</html>

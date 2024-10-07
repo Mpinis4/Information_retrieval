@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <title>Ανάλυση Θεματικών Περιοχών με LSI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ανάλυση Θεματικών Περιοχών με LSI</h1>
+    <!-- Φόρμα για τον αριθμό των θεματικών περιοχών -->
+    <form method="POST">
+        <label for="n_topics">Εισάγετε τον αριθμό των θεματικών περιοχών:</label>
+        <input type="number" id="n_topics" name="n_topics" value="{{ n_topics }}" required>
+        <button type="submit">Υποβολή</button>
+    </form>
+
+    <!-- Εμφάνιση των αποτελεσμάτων αν αυτά υπάρχουν -->
+    {% if results %}
+        <h2>Αποτελέσματα Ανάλυσης:</h2>
+        <ul>
+        {% for result in results %}
+            <li>
+                <strong>Κύρια Θεματική Περιοχή:</strong> {{ result.main_topic }}
+                <strong>Διάνυσμα (Vector):</strong> {{ result.vector }}<br>
+                <strong>Ομιλία:</strong> {{ result.speech }}<br>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <button onclick="window.location.href='/'">Αρχική σελίδα</button>
+</body>
+</html>

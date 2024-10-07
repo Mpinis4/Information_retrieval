@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Κορυφαία k ζεύγη</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Κορυφαία k ζεύγη</h1>
+
+    <!-- Φόρμα για την εισαγωγή του k -->
+    <div class="form-container">
+        <form method="POST" action="/topk">
+            <label for="k">Επιλέξτε αριθμό όμοιων μελών:</label>
+            <input type="number" id="k" name="k" min="2" value="{{ k or '' }}" required>
+            <button type="submit">Αναζήτηση</button>
+        </form>
+    </div>
+
+    <!-- Προβολή αποτελεσμάτων σε πίνακα με τις ανάλογες πληροφορίες-->
+    {% if results %}
+        <div class="results-container">
+            <h2>Κορυφαία-{{ k }} Όμοια μέλη</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ζευγάρι</th>
+                        <th>Βαθμός ομοιότητας</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                        <tr>
+                            <td>{{ result.pair }}</td>
+                            <td>{{ result.similarity }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+    <!-- Κουμπί για την αρχική σελίδα -->
+    <button onclick="window.location.href='/'">Αρχική σελίδα</button>
+</body>
+</html>

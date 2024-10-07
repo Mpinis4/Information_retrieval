@@ -1,0 +1,142 @@
+/* Γενικό στυλ κορμού */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Στυλ για τις επικεφαλίδες */
+h1 {
+    color: #333;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+/* Στυλ για παραγράφους και ετικέτες φόρμας */
+p, label {
+    color: #555;
+    font-size: 1.2rem;
+}
+
+/*συνδεσμοοι και κουμπιά */
+a, button, form button {
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover, form button:hover {
+    background-color: #0056b3;
+}
+
+/*για τις φόρμες */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/*για τις ετικέτες των φορμών */
+form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+/*εισόδοι των φορμών */
+form input[type="text"],
+form input[type="number"],
+form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/*πίνακες */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*κεφαλίδα και τα κελιά των πινάκων */
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+/*hover για τις γραμμές του πίνακα */
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    color: #333;
+}
+
+/*λίστες */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+/*αντικείμενα της λίστας */
+ul li {
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* container φορμών και αποτελεσμάτων */
+div.form-container, div.results-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/*επικεφαλίδες δευτέρου h2 */
+h2 {
+    color: #444;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* προσαρμογής για κινητά */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+}

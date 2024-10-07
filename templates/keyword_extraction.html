@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σύστημα εξαγωγής λέξεων-κλειδιών</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Σύστημα εξαγωγής λέξεων-κλειδιών</h1>
+
+    <!-- Φόρμα για την εξαγωγή λέξεων-κλειδιών με βάση το όνομα μέλους και το πολιτικό κόμμα -->
+    <form method="POST" action="/keyword-extraction">
+        <label for="member_name">Όνομα μέλους:</label>
+        <input type="text" name="member_name" id="member_name" placeholder="Εισάγετε όνομα">
+        
+        <label for="political_party">Πολιτικό κόμμα:</label>
+        <input type="text" name="political_party" id="political_party" placeholder="Εισάγετε κόμμα">
+        <button type="submit">Αναζήτηση</button>
+    </form>
+
+    <!-- Εμφάνιση των αποτελεσμάτων εξαγωγής λέξεων-κλειδιών αν υπάρχουν -->
+    {% if header %}
+        <h2>Κορυφαίες λέξεις-κλειδιά για: {{ header }}</h2>
+        <!-- Λίστα λέξεων-κλειδιών  για κάθε έτος -->
+        <ul>
+            {% for year, keywords in keywords_by_year.items() %}
+                <li><strong>{{ year }}:</strong> {{ keywords | join(', ') }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <button onclick="window.location.href='/'">Αρχική σελίδα</button>
+</body>
+</html>

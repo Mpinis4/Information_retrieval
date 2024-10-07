@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Speakers</title>
+
+    <!-- Σύνδεση με CSS αρχείο  -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <h1>Αναζήτηση</h1>
+
+    <!-- Φόρμα αναζήτησης -->
+    <form method="POST" action="/search">
+        <input type="text" name="member_name" placeholder=" Όνομα μέλους">
+        <input type="text" name="political_party" placeholder=" Πολιτικό κόμμα">
+        <input type="text" name="member_region" placeholder="Περιοχή μέλους">
+        <input type="text" name="roles" placeholder="Αξίωμα">
+        <input type="text" name="speech" placeholder="Ομιλία">
+        <label for="start">Από:
+            <input  type="date" name="starting_date">
+        </label>
+        <label for="end">Έως:
+            <input  type="date" name="ending_date">
+        </label>
+        <button type="submit">Αναζήτηση</button>
+    </form>
+
+    <h2>Αποτελέσματα</h2>
+    <!-- Λίστα για την εμφάνιση αποτελεσμάτων  -->
+    <ul>
+        {% for speaker in speakers %}
+            <!-- Εμφάνιση στοιχείων(όνομα, ρόλος, κόμμα,περιοχή,ημερομηνία ομιλίας και ομιλία) κάθε ομιλητή από τα αποτελέσματα -->
+            <li>
+                <strong>{{ speaker.member_name }}</strong> - {{ speaker.roles }} - 
+                {{ speaker.political_party }} - {{speaker.member_region}} - {{speaker.sitting_date}}<br>
+                <p>{{ speaker.speech }}</p>
+            </li>
+        {% else %}
+            <!-- Μήνυμα όταν δεν υπάρχουν αποτελέσματα αναζήτησης -->
+            <li>Κανένα αποτέλεσμα</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Κουμπί που επιστρέφει τον χρήστη στην αρχική σελίδα -->
+    <button onclick="window.location.href='/'">Αρχική σελίδα</button>
+
+</body>
+</html>
